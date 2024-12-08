@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sweet-frontend
+spec:
+  selector:
+    matchLabels:
+      app: sweet-frontend
+  template:
+    metadata:
+      labels:
+        app: sweet-frontend
+    spec:
+      containers:
+        - name: sweet-frontend
+          image: aryarana/sweet_frontend:v1
+          ports:
+            - containerPort: 5173

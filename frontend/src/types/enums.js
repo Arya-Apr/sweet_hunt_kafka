@@ -1,0 +1,64 @@
+/* eslint-disable @typescript-eslint/no-duplicate-enum-values */
+export var NavigateToRoute;
+(function (NavigateToRoute) {
+    NavigateToRoute["HOME"] = "/";
+    NavigateToRoute["NAVIGATION"] = "navigation";
+    NavigateToRoute["DELIVERY_HOME"] = "delivery";
+    NavigateToRoute["FOOD"] = "food";
+    NavigateToRoute["ORDERED_FOODS"] = "order";
+    NavigateToRoute["CART"] = "cart";
+    NavigateToRoute["USER_PROFILE"] = "profile";
+    NavigateToRoute["ADD_OUTLET"] = "outlets";
+    NavigateToRoute["ADD_ITEM"] = "items";
+    NavigateToRoute["ADD_DELIVERY_STAFF"] = "staff";
+    NavigateToRoute["ORDER_H"] = "history";
+    NavigateToRoute["ORDER_P"] = "dashboard";
+    NavigateToRoute["ORDER_PRE"] = "orders";
+    NavigateToRoute["DELIVERY_ORDERS"] = "home";
+    NavigateToRoute["DELIVERY_COMPLETED"] = "delivered";
+})(NavigateToRoute || (NavigateToRoute = {}));
+export var ApiEndpoints;
+(function (ApiEndpoints) {
+    ApiEndpoints["USER_REGISTER"] = "customer/register";
+    ApiEndpoints["USER_LOGIN"] = "customer/login";
+    ApiEndpoints["GET_USER"] = "customer/user";
+    ApiEndpoints["GET_ALL_ITEMS"] = "management/getAllItems";
+    ApiEndpoints["ADD_ORDER"] = "ordering/addOrder";
+    ApiEndpoints["ADD_USER_ADDRESS"] = "customer/addAddress";
+    ApiEndpoints["UPDATE_USER_ADDRESS"] = "customer/updateAddress";
+    ApiEndpoints["GET_USER_CREDITS"] = "customer/getCredits";
+    ApiEndpoints["GET_ORDER_HISTORY"] = "ordering/getOrderHistory";
+    ApiEndpoints["GET_ALL_OUTLETS"] = "management/getAllOutlets";
+    ApiEndpoints["GET_ALL_ITEMS_ADMIN"] = "management/getAllItems";
+    ApiEndpoints["DELETE_ITEM"] = "management/deleteItem/";
+    ApiEndpoints["UPDATE_ITEM"] = "management/editItem/";
+    ApiEndpoints["ADD_ITEM"] = "management/addItems";
+    ApiEndpoints["ADD_OUTLET"] = "management/addOutlet";
+    ApiEndpoints["DELETE_OUTLET"] = "management/deleteOutlet/";
+    ApiEndpoints["UPDATE_OUTLET"] = "management/editOutlet/";
+    ApiEndpoints["GET_ALL_STAFF"] = "management/getAllDeliveryPerson";
+    ApiEndpoints["GET_DELIVERY_PERSON_BY_ID"] = "management/getDeliveryPersonById";
+    ApiEndpoints["ADD_STAFF"] = "management/addDeliveryPerson";
+    ApiEndpoints["UPDATE_STAFF"] = "management/editDeliveryPerson/";
+    ApiEndpoints["DELETE_STAFF"] = "management/deleteDeliveryPerson/";
+    ApiEndpoints["GET_CATEGORY"] = "management/getAllItemCategory";
+    ApiEndpoints["GET_ORDERS_BY_OUTLET"] = "prepration/getOrders/";
+    ApiEndpoints["DISPATCH_ORDER"] = "prepration/postApprovedOrder";
+    ApiEndpoints["GET_TAX_SLAB"] = "management/getAllTaxSlabs";
+    ApiEndpoints["GET_TODAYS_ORDERS_BY_OUTLET"] = "ordering/getTodaysOrders/";
+    ApiEndpoints["GET_ORDERS_FOR_DELIVERY"] = "ordering/getOrdersByDeliveryPerosn/";
+    ApiEndpoints["SEND_OTP_TO_CUST"] = "delivery/getOTPForCustomer/";
+    ApiEndpoints["UPDATE_STATUS_TO_DELIVERED"] = "delivery/updateDeliveryStatusToDelivered/";
+})(ApiEndpoints || (ApiEndpoints = {}));
+export var ConstantValues;
+(function (ConstantValues) {
+    ConstantValues[ConstantValues["INIT_CREDIT"] = 10000] = "INIT_CREDIT";
+    ConstantValues[ConstantValues["DELIVERY_CHARGE"] = 25] = "DELIVERY_CHARGE";
+})(ConstantValues || (ConstantValues = {}));
+export var Roles;
+(function (Roles) {
+    Roles["CUSTOMER"] = "customer";
+    Roles["RESTAURANT"] = "restaurant";
+    Roles["DELIVERY_PERSON"] = "deliveryPerson";
+    Roles["ADMIN"] = "admin";
+})(Roles || (Roles = {}));

@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath: # Use for local cluster like Minikube
+    path: ./mysql # Absolute path to ./mysql data on your host machine
+---
+# Define a 'Persistent Voulume Claim'(PVC) for Mysql Storage, dynamically provisioned by cluster
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc # name of PVC essential for identifying the storage data
+spec:
+  accessModes:
+    - ReadWriteOnce #This specifies the mode of the claim that we are trying to create.
+  resources:
+    requests:
+      storage: 5Gi #This will tell kubernetes about the amount of space we are trying to claim.
+---
+# Configure 'Deployment' of mysql server
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels: # Must match 'Service' and 'Deployment' selectors
+        app: mysql
+    spec:
+      containers:
+        - image: mysql/mysql-server:5.7 # image from docker-hub
+          name: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "root"
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mysql-data
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: mysql-pvc
+---
+# Define a 'Service' To Expose mysql to Other Services
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql # DNS name
+  labels:
+    app: mysql
+spec:
+  selector: # mysql Pod Should contain same labels
+    app: mysql
+  type: ClusterIP
+  ports:
+    - port: 3306
+      targetPort: 3306

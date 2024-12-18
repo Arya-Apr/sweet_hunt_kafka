@@ -131,6 +131,7 @@ public class BillBean implements BillBeanLocal {
             try (KafkaConnection con = kafka.createConnection()) {
                 LOGGER.log(Level.INFO, "Sending Message to Payment Request....");
                 con.send(new ProducerRecord("payment-request", correlationId, orderJson));
+                LOGGER.log(Level.INFO, "Sent Message to Payment Request....");
 //                if (paymentResponseHolder.getFutureKey().getNow(null) != null) {
 //                    paymentResponseHolder.reset();
 //                }
